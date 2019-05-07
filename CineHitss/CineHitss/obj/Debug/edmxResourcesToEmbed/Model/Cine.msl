@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CineHitssModelStoreContainer" CdmEntityContainer="CineHitssEntities">
+    <EntitySetMapping Name="Boletoes">
+      <EntityTypeMapping TypeName="CineHitssModel.Boleto">
+        <MappingFragment StoreEntitySet="Boleto">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="FuncionID" ColumnName="FuncionID" />
+          <ScalarProperty Name="Asiento" ColumnName="Asiento" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cines">
+      <EntityTypeMapping TypeName="CineHitssModel.Cine">
+        <MappingFragment StoreEntitySet="Cine">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CineN" ColumnName="CineN" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CiudadID" ColumnName="CiudadID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ciudads">
+      <EntityTypeMapping TypeName="CineHitssModel.Ciudad">
+        <MappingFragment StoreEntitySet="Ciudad">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CiudadN" ColumnName="CiudadN" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Funcions">
+      <EntityTypeMapping TypeName="CineHitssModel.Funcion">
+        <MappingFragment StoreEntitySet="Funcion">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="TipoSala" ColumnName="TipoSala" />
+          <ScalarProperty Name="PeliculaID" ColumnName="PeliculaID" />
+          <ScalarProperty Name="CineID" ColumnName="CineID" />
+          <ScalarProperty Name="Sala" ColumnName="Sala" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Generoes">
+      <EntityTypeMapping TypeName="CineHitssModel.Genero">
+        <MappingFragment StoreEntitySet="Genero">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="GeneroN" ColumnName="GeneroN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LugaresOcupados">
+      <EntityTypeMapping TypeName="CineHitssModel.LugaresOcupado">
+        <MappingFragment StoreEntitySet="LugaresOcupados">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FuncionID" ColumnName="FuncionID" />
+          <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Peliculas">
+      <EntityTypeMapping TypeName="CineHitssModel.Pelicula">
+        <MappingFragment StoreEntitySet="Pelicula">
+          <ScalarProperty Name="Clasificacion" ColumnName="Clasificacion" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MovieN" ColumnName="MovieN" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="GeneroID" ColumnName="GeneroID" />
+          <ScalarProperty Name="Img" ColumnName="Img" />
+          <ScalarProperty Name="Sinopsis" ColumnName="Sinopsis" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="CineHitssModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Nickname" ColumnName="Nickname" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Puntos" ColumnName="Puntos" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,109 @@
+﻿@model List<WCF.Funcion>
+@{
+    ViewBag.Title = "Funciones";
+    if (Convert.ToInt32(Session["User"]) != 0)
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+    DateTime hoy = DateTime.Now;
+    string dia1 = hoy.Day + " de " + hoy.ToString("MMMM");
+    DateTime hoy2 = hoy.AddDays(1);
+    string dia2 = hoy2.Day + " de " + hoy2.ToString("MMMM");
+    DateTime hoy3 = hoy2.AddDays(1);
+    string dia3 = hoy3.Day + " de " + hoy3.ToString("MMMM");
+    DateTime hoy4 = hoy3.AddDays(1);
+    string dia4 = hoy4.Day + " de " + hoy4.ToString("MMMM");
+    DateTime hoy5 = hoy4.AddDays(1);
+    string dia5 = hoy5.Day + " de " + hoy5.ToString("MMMM");
+
+}
+<style>
+
+    figcaption {
+        background-color: #222;
+        color: #fff;
+        font: italic smaller sans-serif;
+        padding: 3px;
+        text-align: center;
+    }
+
+    figure {
+        border: thin #c0c0c0 solid;
+        display: flex;
+        flex-flow: column;
+        padding: 5px;
+        max-width: 220px;
+        margin: auto;
+    }
+</style>
+<div class="jumbotron">
+    <form action='@Url.Action("Index", "Cine")' method="post" class="center-block">
+        <input type="submit" value="Volver" class="btn btn-primary btn-lg" style="width:px; height:50px" />
+    </form>
+    <br />
+    <br />
+    <legend class="text-center header border border-primary">Cartelera</legend>
+    <div class="row">
+
+        <div class="col-lg-4 ">
+            <div class=" border border-primary">
+                <form action='@Url.Action("Funciones", "Cine")' method="post" class="center-block">
+                    <select name="fecha">
+                        <option value="D">Fecha</option>
+                        <option value="@hoy.ToString("yyyy/MM/dd")">@dia1</option>
+                        <option value="@hoy2.ToString("yyyy/MM/dd")">@dia2</option>
+                        <option value="@hoy3.ToString("yyyy/MM/dd")">@dia3</option>
+                        <option value="@hoy4.ToString("yyyy/MM/dd")">@dia4</option>
+                        <option value="@hoy5.ToString("yyyy/MM/dd")">@dia5</option>
+                    </select>
+                    <br />
+                    <br />
+                    <select name="clasificacion">
+                        <option value="D">Clasificacion</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                    </select>
+                    <br />
+                    <br />
+                    <select name="genero">
+                        <option value="0">Genero</option>
+                        <option value="1">ACCION</option>
+                        <option value="2">ANIME</option>
+                        <option value="3">COMEDIA</option>
+                        <option value="4">TERROR</option>
+                        <option value="5">ROMANCE</option>
+                        <option value="6">DEPORTE</option>
+                        <option value="7">MUSICAL</option>
+                    </select>
+                    <br />
+                    <br />
+                    <input type="submit" value="Filtrar" class="btn btn-primary btn-lg" />
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-8 ">
+            <div class="f border border-primary">
+                <div class="row">
+
+                    @foreach (var a in Model)
+                    {
+                        <div class=" border border-primary" style="margin:70px; margin-bottom:30px">
+                            <figure>
+                                <a href="@Url.Action("ComprarBoleto", "Cine", new { id = a.ID })">
+                                    <img src="@a.Pelicula.Img" width="200" height="300" title="@a.Pelicula.Sinopsis" id="@a.ID ">
+                                </a>
+                                <figcaption>
+                                    @a.Pelicula.MovieN
+                                </figcaption>
+                            </figure>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

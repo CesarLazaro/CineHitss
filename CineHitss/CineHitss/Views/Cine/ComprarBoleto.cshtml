@@ -1,0 +1,57 @@
+﻿@model int
+@{
+    ViewBag.Title = "ComprarBoleto";
+    WCF.CineHitssEntities Entity = new WCF.CineHitssEntities();
+    var funcion = Entity.Funcions.FirstOrDefault(c => c.ID == Model);
+    var A = "";
+    if (Convert.ToInt32(Session["User"]) != 0)
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+}
+<style>
+
+    figcaption {
+        background-color: #222;
+        color: #fff;
+        font: italic smaller sans-serif;
+        padding: 3px;
+        text-align: center;
+    }
+
+    figure {
+        border: thin #c0c0c0 solid;
+        display: flex;
+        flex-flow: column;
+        padding: 5px;
+        max-width: 220px;
+        margin: auto;
+    }
+</style>
+<div class="jumbotron">
+    <legend class="text-center header border border-primary">Comprar Boleto</legend>
+    <div class="row">
+
+        <div class="col-lg-12 ">
+            <div class=" border border-primary">
+                <form action='@Url.Action("MostraBoleto", "Cine")' method="post" class="center-block">
+                    <figure>
+                        <img src="@funcion.Pelicula.Img" width="200" height="300" title="@funcion.Pelicula.Sinopsis">
+                        <figcaption>
+                            @funcion.Pelicula.MovieN
+                        </figcaption>
+                        <br />
+                        <input type="submit" value="Comprar Boleto" class="btn btn-primary btn-lg" style="width:210px; height:50px" />
+
+                    </figure>
+                    <br />
+                    <legend class="text-center header border border-primary">SINOPSIS:</legend>
+                    <p>@funcion.Pelicula.Sinopsis</p>
+
+                </form>
+            </div>
+        </div>
+
+ 
+    </div>
+</div>

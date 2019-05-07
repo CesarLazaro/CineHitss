@@ -1,0 +1,44 @@
+﻿@model CineHitss.Model.CiudadCine
+@{
+    if (Convert.ToInt32(Session["User"]) != 0)
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+    DateTime hoy = DateTime.Now;
+    string dia = hoy.DayOfWeek.ToString();
+}
+
+
+
+
+<div class="jumbotron">
+    <legend class="text-center header border border-primary">SELECCIONA TU CINE MAS CERCANO</legend>
+    <div class="form-group border border-primary">
+        <div class="col-md-4 ">
+            <form action='@Url.Action("FuncionesBefore", "Cine")' method="post" class="center-block">
+                <label class="text-info text-left">Ciudad</label>
+                @Html.DropDownListFor(Model => Model.CiudadID, ViewBag.Ciudades as SelectList, "--Selecciona una ciudad--", new { @class = "form-control" })
+                <br />
+                <br />
+                <label class="text-info text-left">Cine</label>
+                @Html.DropDownListFor(Model => Model.CineID, new SelectList(" "), "--Selecciona un cine--", new { @class = "form-control" })
+                <br />
+                <br />
+                <input type="submit" value="Confirmar" class="btn btn-primary btn-lg" />
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#CiudadID").change(function () {
+            $.get("/Cine/GetCines", { CiudadID: $("#CiudadID").val() }, function (data) {
+                $("#CineID").empty();
+                $.each(data, function (index, row) {
+                    $("#CineID").append("<option value='" + row.ID + "'>" + row.CineN + "</option>")
+                });
+            });
+        })
+    });
+</script>

@@ -1,0 +1,12 @@
+F:\MVC\CineHitss\WCF\bin\WCF.dll.config
+F:\MVC\CineHitss\WCF\bin\WCF.dll
+F:\MVC\CineHitss\WCF\bin\WCF.pdb
+F:\MVC\CineHitss\WCF\bin\EntityFramework.dll
+F:\MVC\CineHitss\WCF\bin\EntityFramework.SqlServer.dll
+F:\MVC\CineHitss\WCF\bin\EntityFramework.xml
+F:\MVC\CineHitss\WCF\bin\EntityFramework.SqlServer.xml
+F:\MVC\CineHitss\WCF\obj\Debug\WCF.csproj.CoreCompileInputs.cache
+F:\MVC\CineHitss\WCF\obj\Debug\WCF.csproj.CopyComplete
+F:\MVC\CineHitss\WCF\obj\Debug\WCF.dll
+F:\MVC\CineHitss\WCF\obj\Debug\WCF.pdb
+F:\MVC\CineHitss\WCF\obj\Debug\WCF.csprojAssemblyReference.cache

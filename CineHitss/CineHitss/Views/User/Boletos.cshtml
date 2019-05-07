@@ -1,0 +1,55 @@
+﻿@model List<WCF.Boleto>
+
+@{
+    ViewBag.Title = "Boletos";
+    if (Convert.ToInt32(Session["User"]) != 0)
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+}
+<style>
+
+    figcaption {
+        background-color: #222;
+        color: #fff;
+        font: italic smaller sans-serif;
+        padding: 3px;
+        text-align: center;
+    }
+
+    figure {
+        border: thin #c0c0c0 solid;
+        display: flex;
+        flex-flow: column;
+        padding: 5px;
+        max-width: 220px;
+        margin: auto;
+    }
+</style>
+<div class="jumbotron">
+    <legend class="text-center header border border-primary">HISTORIAL DE BOLETOS</legend>
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="f border border-primary">
+                <div class="row">
+                    @foreach (var a in Model)
+                    {
+                        <div class=" border border-primary" style="margin:70px; margin-bottom:30px">
+                            <figure>
+                                <img src="@a.Funcion.Pelicula.Img" width="200" height="300" title="@a.Funcion.Pelicula.Sinopsis">
+                                <figcaption>
+                                    @a.Funcion.Pelicula.MovieN
+                                </figcaption>
+                                <br
+                                <p>ID:@a.ID</p>
+                                <p>Sala:@a.Funcion.Sala</p>
+                                <p>Tipo/Sala:@a.Funcion.TipoSala</p>
+                                <p>Precio:@a.Total</p>
+                            </figure>
+                        </div>
+                    }
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

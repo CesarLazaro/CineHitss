@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8" />
+    <title>Bienvenido</title>
+    <link rel="shortcut icon" href="~/Images/ghLogo.png" />
+    <link rel="stylesheet" href="~/MyCss/estilos.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class=" estilosNav navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">
+            <img src="~/Images/hitssInicio.png" alt="GlobalHitss" width="250" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/Cine/Index">
+                        Inicio<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/User/Account">
+                        Cuenta<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/User/Boletos">Historial<span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span> </a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action='@Url.Action("AftherLogin", "Cine")' method="post">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Cerrar Sesion</button>
+            </form>
+        </div>
+
+    </nav>
+ 
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+
+    </div>
+    <footer class="bg-dark py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="accordion d-lg-flex w-100" id="accordion">
+
+                            <div class="col-lg-4 col-md-12">
+                                <a href="#seccionUno" class="h4 text-white nav-link p-0 d-block d-lg-none d-xl-none" data-toggle="collapse">
+                                    Redes Sociales
+                                </a>
+                                <div class="text-white text-center h4 d-none d-lg-block d-lg-block">
+                                    Redes Sociales<br>
+                                </div>
+                                <div class="collapse text-white d-lg-flex" id="seccionUno" data-parent="#accordion">
+                                    <ul class="list-unstyled d-flex w-100 justify-content-between">
+                                        <li><a href="#" class="nav-link p-0"><i class="fa fa-facebook fa-2x" style="color:#9af59c;"></i></a></li>
+                                        <li><a href="#" class="nav-link p-0"><i class="fa fa-twitter fa-2x" style="color:#9af59c;"></i></a></li>
+                                        <li><a href="#" class="nav-link p-0"><i class="fa fa-instagram fa-2x" style="color:#9af59c;"></i></a></li>
+                                        <li><a href="#" class="nav-link p-0"><i class="fa fa-linkedin fa-2x" style="color:#9af59c;"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <a href="#seccionDos" class="h4 text-white nav-link p-0 d-block d-lg-none d-xl-none" data-toggle="collapse">
+                                    Ubicación
+                                </a>
+                                <div class="text-white text-center h4 d-none d-lg-block d-lg-block">
+                                    Ubicación<br>
+                                </div>
+                                <div class="collapse text-white d-lg-flex" id="seccionDos" data-parent="#accordion">
+                                    Av. Adolfo López Mateos Sur 2077, Jardines Plaza del Sol, 44510 Zapopan, Jal.
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <a href="#seccionTres" class="h4 text-white nav-link p-0 d-block d-lg-none d-xl-none" data-toggle="collapse">
+                                    Contacto
+                                </a>
+                                <div class="text-white text-center h4 d-none d-lg-block d-lg-block">
+                                    Contacto<br>
+                                </div>
+                                <div class="collapse text-white d-lg-flex" id="seccionTres" data-parent="#accordion">
+                                    <ul class="list-unstyled d-flex w-100 justify-content-between">
+                                        <li class="nav-link p-0 text-white"><i class="fa fa-phone fa-2x" style="color:#9af59c;"></i> 01 33 3030 7400</li>
+                                        <li><a href="#" class="nav-link p-0 text-white"><i class="fa fa-globe fa-2x" style="color:#9af59c;"></i> globalhitss.com</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CineHitssModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Boleto">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UsuarioID" Type="Int32" />
+    <Property Name="FuncionID" Type="Int32" />
+    <Property Name="Asiento" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="Double" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="Funcion" Relationship="Self.FK__Boleto__FuncionI__45F365D3" FromRole="Boleto" ToRole="Funcion" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Boleto__UsuarioI__44FF419A" FromRole="Boleto" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Cine">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CineN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Direccion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="CiudadID" Type="Int32" />
+    <NavigationProperty Name="Ciudad" Relationship="Self.FK__Cine__CiudadID__145C0A3F" FromRole="Cine" ToRole="Ciudad" />
+    <NavigationProperty Name="Funcions" Relationship="Self.FK__Funcion__CineID__1CF15040" FromRole="Cine" ToRole="Funcion" />
+  </EntityType>
+  <EntityType Name="Ciudad">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CiudadN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <NavigationProperty Name="Cines" Relationship="Self.FK__Cine__CiudadID__145C0A3F" FromRole="Ciudad" ToRole="Cine" />
+  </EntityType>
+  <EntityType Name="Funcion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoraInicio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Fecha" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="Precio" Type="Double" />
+    <Property Name="TipoSala" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PeliculaID" Type="Int32" />
+    <Property Name="CineID" Type="Int32" />
+    <Property Name="Sala" Type="Int32" />
+    <NavigationProperty Name="Boletoes" Relationship="Self.FK__Boleto__FuncionI__45F365D3" FromRole="Funcion" ToRole="Boleto" />
+    <NavigationProperty Name="Cine" Relationship="Self.FK__Funcion__CineID__1CF15040" FromRole="Funcion" ToRole="Cine" />
+    <NavigationProperty Name="Pelicula" Relationship="Self.FK__Funcion__Pelicul__1BFD2C07" FromRole="Funcion" ToRole="Pelicula" />
+    <NavigationProperty Name="LugaresOcupados" Relationship="Self.FK__LugaresOc__Funci__239E4DCF" FromRole="Funcion" ToRole="LugaresOcupados" />
+  </EntityType>
+  <EntityType Name="Genero">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GeneroN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Peliculas" Relationship="Self.FK__Pelicula__Genero__1920BF5C" FromRole="Genero" ToRole="Pelicula" />
+  </EntityType>
+  <EntityType Name="LugaresOcupado">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FuncionID" Type="Int32" />
+    <Property Name="Lugar" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Funcion" Relationship="Self.FK__LugaresOc__Funci__239E4DCF" FromRole="LugaresOcupados" ToRole="Funcion" />
+  </EntityType>
+  <EntityType Name="Pelicula">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MovieN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="GeneroID" Type="Int32" />
+    <Property Name="Img" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+    <Property Name="Sinopsis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Funcions" Relationship="Self.FK__Funcion__Pelicul__1BFD2C07" FromRole="Pelicula" ToRole="Funcion" />
+    <NavigationProperty Name="Genero" Relationship="Self.FK__Pelicula__Genero__1920BF5C" FromRole="Pelicula" ToRole="Genero" />
+    <Property Name="Clasificacion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nickname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaNac" Type="DateTime" Precision="0" />
+    <Property Name="Estado" Type="Boolean" />
+    <Property Name="Puntos" Type="Int32" />
+    <Property Name="Genero" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Boletoes" Relationship="Self.FK__Boleto__UsuarioI__44FF419A" FromRole="Usuario" ToRole="Boleto" />
+  </EntityType>
+  <Association Name="FK__Boleto__FuncionI__45F365D3">
+    <End Role="Funcion" Type="Self.Funcion" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="FuncionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Boleto__UsuarioI__44FF419A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Boleto" Type="Self.Boleto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Boleto">
+        <PropertyRef Name="UsuarioID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cine__CiudadID__145C0A3F">
+    <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Cine" Type="Self.Cine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ciudad">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Cine">
+        <PropertyRef Name="CiudadID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Funcion__CineID__1CF15040">
+    <End Role="Cine" Type="Self.Cine" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Funcion" Type="Self.Funcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cine">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Funcion">
+        <PropertyRef Name="CineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Funcion__Pelicul__1BFD2C07">
+    <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Funcion" Type="Self.Funcion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pelicula">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Funcion">
+        <PropertyRef Name="PeliculaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__LugaresOc__Funci__239E4DCF">
+    <End Role="Funcion" Type="Self.Funcion" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LugaresOcupados" Type="Self.LugaresOcupado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Funcion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LugaresOcupados">
+        <PropertyRef Name="FuncionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Pelicula__Genero__1920BF5C">
+    <End Role="Genero" Type="Self.Genero" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Pelicula" Type="Self.Pelicula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Genero">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Pelicula">
+        <PropertyRef Name="GeneroID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CineHitssEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Boletoes" EntityType="Self.Boleto" />
+    <EntitySet Name="Cines" EntityType="Self.Cine" />
+    <EntitySet Name="Ciudads" EntityType="Self.Ciudad" />
+    <EntitySet Name="Funcions" EntityType="Self.Funcion" />
+    <EntitySet Name="Generoes" EntityType="Self.Genero" />
+    <EntitySet Name="LugaresOcupados" EntityType="Self.LugaresOcupado" />
+    <EntitySet Name="Peliculas" EntityType="Self.Pelicula" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Boleto__FuncionI__45F365D3" Association="Self.FK__Boleto__FuncionI__45F365D3">
+      <End Role="Funcion" EntitySet="Funcions" />
+      <End Role="Boleto" EntitySet="Boletoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Boleto__UsuarioI__44FF419A" Association="Self.FK__Boleto__UsuarioI__44FF419A">
+      <End Role="Usuario" EntitySet="Usuarios" />
+      <End Role="Boleto" EntitySet="Boletoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cine__CiudadID__145C0A3F" Association="Self.FK__Cine__CiudadID__145C0A3F">
+      <End Role="Ciudad" EntitySet="Ciudads" />
+      <End Role="Cine" EntitySet="Cines" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Funcion__CineID__1CF15040" Association="Self.FK__Funcion__CineID__1CF15040">
+      <End Role="Cine" EntitySet="Cines" />
+      <End Role="Funcion" EntitySet="Funcions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Funcion__Pelicul__1BFD2C07" Association="Self.FK__Funcion__Pelicul__1BFD2C07">
+      <End Role="Pelicula" EntitySet="Peliculas" />
+      <End Role="Funcion" EntitySet="Funcions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__LugaresOc__Funci__239E4DCF" Association="Self.FK__LugaresOc__Funci__239E4DCF">
+      <End Role="Funcion" EntitySet="Funcions" />
+      <End Role="LugaresOcupados" EntitySet="LugaresOcupados" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Pelicula__Genero__1920BF5C" Association="Self.FK__Pelicula__Genero__1920BF5C">
+      <End Role="Genero" EntitySet="Generoes" />
+      <End Role="Pelicula" EntitySet="Peliculas" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

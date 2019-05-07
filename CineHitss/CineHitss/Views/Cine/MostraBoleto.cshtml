@@ -1,0 +1,55 @@
+﻿@model WCF.Boleto
+@{
+    ViewBag.Title = "MostraBoleto";
+    DateTime hoy = DateTime.Now;
+    string hoy2 = hoy.ToString("yyyy/MM/dd");
+    if (Convert.ToInt32(Session["User"]) != 0)
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+}
+
+<style>
+
+    figcaption {
+        background-color: #222;
+        color: #fff;
+        font: italic smaller sans-serif;
+        padding: 3px;
+        text-align: center;
+    }
+
+    figure {
+        border: thin #c0c0c0 solid;
+        display: flex;
+        flex-flow: column;
+        padding: 5px;
+        max-width: 220px;
+        margin: auto;
+    }
+</style>
+<div class="jumbotron">
+    <legend class="text-center header border border-primary">BOLETO</legend>
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="f border border-primary">
+                <div class="row">                    
+                        <div class=" border border-primary" style="margin:70px; margin-bottom:30px">
+                            <figure>
+                                <img src="@Model.Funcion.Pelicula.Img" width="200" height="300" title="@Model.Funcion.Pelicula.Sinopsis">
+                                <figcaption>
+                                    @Model.Funcion.Pelicula.MovieN
+                                </figcaption>
+                                <br
+                                <p>ID:@Model.ID</p>
+                                <p>Fecha:@hoy2</p>
+                                <p>Sala:@Model.Funcion.Sala</p>
+                                <p>Tipo/Sala:@Model.Funcion.TipoSala</p>
+                                <p>Precio:@Model.Total</p>
+                            </figure>
+                        </div>                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

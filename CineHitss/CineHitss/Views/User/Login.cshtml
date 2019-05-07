@@ -1,0 +1,35 @@
+﻿
+@{
+      ViewBag.Title = "Login";
+}
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-lg" >
+                    <fieldset>
+                        <legend class="text-center header">LOGIN</legend>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <form action='@Url.Action("Login", "User")' method="post" class="center-block">
+                                    <br>
+                                    INGRESE E-MAIL
+                                    <input name="Email" id="Email" type="email" placeholder="Email" class="form-control" required />
+                                    <br>
+                                    INGRESE PASSWORD
+                                    <input name="Password" id="Password" type="password" placeholder="Password" class="form-control" required />
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <input type="submit" value="Iniciar sesión" class="btn btn-primary btn-lg" />
+                                 </form>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+ </div>
+
+

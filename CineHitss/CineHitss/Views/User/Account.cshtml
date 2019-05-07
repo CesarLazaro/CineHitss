@@ -1,0 +1,31 @@
+﻿@model WCF.Usuario
+@{
+    ViewBag.Title = "Account";
+    if (Convert.ToInt32(Session["User"]) != 0)
+    {
+        Layout = "~/Views/Shared/_Layout2.cshtml";
+    }
+}
+
+<div class="jumbotron">
+    <legend class="text-center header border border-primary">ACCOUNT</legend>
+    <div class="form-inline">
+        <div class="col-md-12 border border-primary">
+            <form action='@Url.Action("Login", "User")' method="post" class="center-block">
+                <br/>     
+                 <p class="text-info text-right">FECHA DE INICIO: @Model.FechaInicio</p>
+                <br>
+                <p class="text-info">NICKNAME: @Model.Nickname</p>
+                <br>
+                <p class="text-info">NOMBRE: @Model.Nombre</p>
+                <br>
+                <p class="text-info">GENERO: @Model.Genero</p>
+                <br>
+                <p class="text-info">CORREO: @Model.Mail</p>
+                <br>
+                <p class="text-info text-center">Puntos: @Model.Puntos</p>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
